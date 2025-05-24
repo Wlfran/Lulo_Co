@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lulo-Co Exports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2e2e2e;
+            background: #f4f9f4;
+        }
+
+
+        header {
+            background: #ffffffcc;
+
+            position: sticky;
+
+            top: 0;
+            width: 100%;
+            z-index: 10000;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            backdrop-filter: saturate(180%) blur(10px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
+            color: #6aa80a;
+            letter-spacing: 2px;
+            user-select: none;
+            cursor: default;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            font-weight: 600;
+            font-size: 1.05rem;
+            user-select: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #2e2e2e;
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 0.2rem 0;
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background: #6aa80a;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a:focus::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus {
+            color: #6aa80a;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #6aa80a;
+            user-select: none;
+        }
+
+
+        main {
+            max-width: 700px;
+            margin: 7rem auto 3rem;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80') no-repeat center center/cover;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(106, 168, 10, 0.3);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(106, 168, 10, 0.6);
+
+            border-radius: 15px;
+            z-index: 0;
+        }
+
+        main h1 {
+            position: relative;
+            font-size: 2.6rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+            user-select: none;
+        }
+
+
+        form {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+        }
+
+        label {
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            padding: 0.9rem 1.2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            resize: vertical;
+            transition: box-shadow 0.3s ease;
+            background: #f0fff0;
+
+            color: #2e2e2e;
+            font-weight: 600;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            box-shadow: 0 0 12px 3px #a6d608;
+            outline: none;
+            background: #e8f7cf;
+        }
+
+        button[type="submit"] {
+            background: #a6d608;
+            color: #1f3c00;
+            border: none;
+            padding: 1rem 0;
+            font-size: 1.25rem;
+            font-weight: 900;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.15s ease;
+            box-shadow: 0 6px 20px rgba(166, 214, 8, 0.6);
+        }
+
+        button[type="submit"]:hover {
+            background: #7b9b00;
+            transform: scale(1.05);
+        }
+
+
+        .contact-info {
+            margin-top: 2.5rem;
+            border-top: 2px solid #a6d608;
+            padding-top: 1.2rem;
+            font-size: 1rem;
+            color: #e7f2cc;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .contact-info p {
+            margin: 0.4rem 0;
+        }
+
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+
+        .social-icons {
+            margin-top: 0.75rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-icons a {
+            color: #b4d462;
+            font-size: 2rem;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .social-icons a:hover {
+            color: #e3f7b1;
+        }
+
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                padding: 0.5rem;
+            }
+
+            main {
+                margin: 0;
+
+                border-radius: 0;
+
+            }
+
+            nav ul {
+                flex-direction: column;
+                position: absolute;
+                top: 65px;
+                right: 20px;
+                background: #ffffff;
+                border-radius: 12px;
+                padding: 0.75rem 1rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+                display: none;
+                width: 180px;
+                text-align: left;
+                z-index: 999;
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            nav ul.active {
+                display: flex;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            nav ul li {
+                margin-bottom: 0.6rem;
+            }
+
+            nav ul li:last-child {
+                margin-bottom: 0;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 0.5rem 0.8rem;
+                font-size: 1.1rem;
+                color: #2e2e2e;
+                border-radius: 8px;
+                transition: background-color 0.2s ease, color 0.2s ease;
+            }
+
+            nav ul li a:hover,
+            nav ul li a:focus {
+                background-color: #6aa80a;
+                color: white;
+            }
+        }
+
+
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none !important;
+            }
+
+            nav ul {
+                display: flex !important;
+                position: static !important;
+                flex-direction: row !important;
+                background: none !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html" style="text-decoration:none; color: inherit;">Lulo Co 🍃</a>
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul id="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="producto.html">Producto</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contactanos.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Contáctanos</h1>
+
+        <form id="contactForm">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tu@correo.com" required />
+
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+            <button type="submit">Enviar mensaje</button>
+        </form>
+
+        <div class="contact-info">
+            <p><strong>Dirección:</strong> Km 5 vía Funza-Mosquera, Cundinamarca, Colombia</p>
+            <p><strong>Correo:</strong> contacto@lulocoexport.com</p>
+            <p><strong>Teléfono:</strong> +57 1 234 5678</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Lulo Co Export S.A.S. Todos los derechos reservados.</p>
+        <p>Km 5 vía Funza-Mosquera, Cundinamarca, Colombia | contacto@lulocoexport.com</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/lulo_co.exports?igsh=Y2J4eTE4Y2I3bzBq" target="_blank"
+                aria-label="Instagram" rel="noopener noreferrer">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5zm0 1.5h8.5a4.25 4.25 0 0 1 4.25 4.25v8.5a4.25 4.25 0 0 1-4.25 4.25h-8.5a4.25 4.25 0 0 1-4.25-4.25v-8.5a4.25 4.25 0 0 1 4.25-4.25zm4.25 2.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 1.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm3.75-.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                </svg>
+            </a>
+            <a href="https://wa.me/573042622188" target="_blank" aria-label="WhatsApp" rel="noopener noreferrer">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M20.52 3.48A11.91 11.91 0 0 0 12 0C5.37 0 0 5.37 0 12a11.82 11.82 0 0 0 1.6 6L0 24l6-1.56a11.9 11.9 0 0 0 6 1.56c6.63 0 12-5.37 12-12 0-3.23-1.26-6.27-3.48-8.52zm-8.6 16.45a9.08 9.08 0 0 1-4.88-1.46l-.35-.21-3.06.8.82-3.02-.23-.34a9.05 9.05 0 0 1 1.58-12.55 8.98 8.98 0 0 1 5.1-1.49 9.09 9.09 0 0 1 6.42 2.67 9.07 9.07 0 0 1 2.68 6.43 9.07 9.07 0 0 1-9.04 9.04zm5.13-7.34c-.28-.14-1.64-.8-1.9-.89-.26-.08-.45-.14-.64.14-.19.28-.73.89-.9 1.07-.17.19-.35.21-.65.07a7.6 7.6 0 0 1-2.24-1.38 8.46 8.46 0 0 1-1.57-1.94c-.17-.29-.02-.45.13-.59.14-.14.32-.36.48-.54a1.64 1.64 0 0 0 .24-.41c.08-.14.04-.26-.02-.36-.07-.11-.63-1.52-.87-2.08-.23-.55-.47-.48-.64-.49l-.55-.01a1.4 1.4 0 0 0-1.04.49 4.41 4.41 0 0 0-1.33 3.16c0 1.86 1.49 3.67 1.7 3.92.22.25 2.95 4.5 7.15 6.31a9.72 9.72 0 0 0 3.33 1.06 3.8 3.8 0 0 0 2.84-.96 3.63 3.63 0 0 0 1.28-2.1c.1-.3.1-.55.07-.62-.03-.07-.26-.11-.54-.2z" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+
+</body>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        Swal.fire({
+            icon: 'success',
+            title: '¡Gracias por contactarnos!',
+            text: 'Pronto te responderemos.',
+            confirmButtonColor: '#6aa80a',
+            confirmButtonText: 'Cerrar'
+        });
+
+        this.reset();
+    });
+</script>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
+    }
+</script>
+
+</html>

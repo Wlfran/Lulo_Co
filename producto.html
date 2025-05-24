@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lulo-Co Exports | Producto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+
+        }
+
+        header {
+            background: #ffffffdd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        nav .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8rem;
+            color: #84BD00;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: #444;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            color: #84BD00;
+        }
+
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #84BD00;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+
+        .about {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .producto-contenido {
+            display: flex;
+            gap: 2rem;
+            max-width: 1500px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            align-items: stretch;
+            flex-wrap: nowrap;
+        }
+
+        .producto-img {
+            flex: 1 1 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+        }
+
+        .producto-img img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .producto-img:hover {
+            transform: scale(1.05);
+        }
+
+
+        .producto-info {
+            flex: 1 1 50%;
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 6px 24px rgb(0 0 0 / 0.07);
+            color: #2d2d2d;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .producto-info h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4b7d13;
+
+            margin-bottom: 0.5rem;
+        }
+
+        .producto-info p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .producto-info ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 0 1rem 0;
+        }
+
+        .producto-info ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .producto-info ul li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: #84BD00;
+            font-weight: bold;
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+
+        .formulario-compra form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .formulario-compra label {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .formulario-compra select,
+        .formulario-compra input[type="number"] {
+            padding: 0.55rem 1rem;
+            border: 1.5px solid #ccc;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .formulario-compra select:focus,
+        .formulario-compra input[type="number"]:focus {
+            outline: none;
+            border-color: #84BD00;
+            box-shadow: 0 0 6px #a9d249aa;
+        }
+
+        .formulario-compra button {
+            margin-top: 0.5rem;
+            background-color: #84BD00;
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 0.75rem 0;
+            font-size: 1.15rem;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgb(132 189 0 / 0.6);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .formulario-compra button:hover {
+            background-color: #6ca400;
+            transform: scale(1.05);
+        }
+
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+
+        .social-icons {
+            margin-top: 0.75rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-icons a {
+            color: #b4d462;
+            font-size: 2rem;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .social-icons a:hover {
+            color: #e3f7b1;
+        }
+
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                position: absolute;
+                top: 65px;
+                right: 20px;
+                background: #ffffff;
+                border-radius: 12px;
+                padding: 0.5rem 1rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                display: none;
+                width: 180px;
+                text-align: left;
+                z-index: 999;
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            nav ul.active {
+                display: flex;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            nav ul li {
+                margin-bottom: 0.5rem;
+            }
+
+            nav ul li:last-child {
+                margin-bottom: 0;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 0.4rem 0.6rem;
+                font-size: 1.1rem;
+                color: #333;
+                border-radius: 8px;
+                transition: background-color 0.2s ease, color 0.2s ease;
+            }
+
+            nav ul li a:hover,
+            nav ul li a:focus {
+                background-color: #84BD00;
+                color: white;
+            }
+
+            .producto-contenido {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+            nav ul {
+                width: 140px;
+                right: 10px;
+                padding: 0.4rem 0.8rem;
+            }
+
+            nav ul li a {
+                font-size: 1rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            nav {
+                padding: 1rem 0.5rem;
+            }
+
+            .producto-img,
+            .producto-info {
+                min-width: 100%;
+                max-width: 100%;
+                padding: 1rem;
+            }
+
+            .producto-contenido {
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+        }
+
+
+        @media (max-width: 320px) {
+            nav ul {
+                width: 120px;
+                right: 8px;
+                padding: 0.3rem 0.6rem;
+            }
+
+            nav ul li a {
+                font-size: 0.95rem;
+                padding: 0.25rem 0.5rem;
+            }
+
+            .producto-contenido {
+                gap: 1rem;
+                padding: 0.8rem;
+            }
+
+            .about {
+                padding: 6rem 1rem 3rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        .swal2-container {
+            z-index: 3000 !important;
+        }
+
+
+
+        #pedidoModal>div {
+            background: white;
+            padding: 2rem 2.5rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #pedidoModal h3 {
+            font-weight: 700;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: #2c7a1f;
+        }
+
+        #pedidoModal label {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            display: block;
+            color: #444;
+        }
+
+        #pedidoModal textarea,
+        #pedidoModal input[type="date"] {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            margin-bottom: 1.3rem;
+            border-radius: 10px;
+            border: 1.5px solid #ddd;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        #pedidoModal textarea:focus,
+        #pedidoModal input[type="date"]:focus {
+            outline: none;
+            border-color: #84BD00;
+            box-shadow: 0 0 6px #a9d249aa;
+        }
+
+        #pedidoModal button {
+            padding: 0.7rem 1.2rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #pedidoModal button[type="submit"] {
+            background: #84BD00;
+            color: white;
+            box-shadow: 0 6px 12px rgb(132 189 0 / 0.6);
+        }
+
+        #pedidoModal button[type="submit"]:hover {
+            background: #6ca400;
+        }
+
+        #pedidoModal button#cerrarModal {
+            background: #ccc;
+            color: #333;
+            margin-left: 1rem;
+        }
+
+        #pedidoModal button#cerrarModal:hover {
+            background: #aaa;
+        }
+
+
+
+        @media (max-width: 768px) {
+            .producto-contenido {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .producto-img,
+            .producto-info {
+                flex: 1 1 100%;
+            }
+
+            .formulario-compra {
+                max-width: 100%;
+                padding: 1.5rem;
+            }
+        }
+
+        .galeria-producto {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .galeria-producto img {
+            width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .galeria-producto img:hover {
+            transform: scale(1.03);
+        }
+
+        .ir-compra {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .ir-compra button {
+            background-color: #84BD00;
+            color: #fff;
+            padding: 0.8rem 1.6rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .ir-compra button:hover {
+            background-color: #6fa300;
+        }
+
+
+
+        .carousel-container {
+            flex: 1 1 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-slide {
+            width: 100%;
+            height: auto;
+            display: none;
+            border-radius: 12px;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+
+        .product-info {
+            flex: 1 1 450px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(6px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-size: 0.95rem;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .product-info h2 {
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .product-info ul {
+            list-style: disc;
+            padding-left: 1.2rem;
+        }
+
+        .hero {
+            height: 100vh;
+            padding-top: 95px;
+
+            box-sizing: border-box;
+            background: url('./imgs/lulo.jpg') center;
+            position: relative;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+            border-radius: 12px;
+        }
+
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            padding: 2rem;
+            width: 100%;
+        }
+
+
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+
+                padding-top: 95px;
+                padding-bottom: 2rem;
+                background-attachment: fixed;
+            }
+
+
+            .carousel-container {
+                margin-top: 1rem;
+
+            }
+
+            .product-info {
+                text-align: center;
+            }
+        }
+    </style>
+
+    <link rel="icon" href="./imgs/favicon.png" type="image/png">
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html" style="text-decoration:none; color: inherit;">Lulo Co 🍃</a>
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul id="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="producto.html">Producto</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contactanos.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <div class="hero-grid">
+
+                <div class="carousel-container">
+                    <img src="./imgs/foto1.jpeg" class="carousel-slide active" alt="Pulpa de Lulo 1">
+                    <img src="./imgs/foto2.jpeg" class="carousel-slide" alt="Pulpa de Lulo 2">
+                </div>
+
+                <div class="product-info">
+                    <h2>Pulpa de lulo congelada 100% orgánica</h2>
+                    <ul>
+                        <li><strong>Marca:</strong> Lulo Co Export 🍃</li>
+                        <li><strong>Ingredientes:</strong> Pulpa de lulo (100%)</li>
+                        <li><strong>Instrucciones:</strong> Mantener congelado a -18°C</li>
+                        <li><strong>Uso:</strong> Ideal para jugos, batidos, postres</li>
+                        <li><strong>Empaque:</strong> Reciclable (PET), símbolo visible</li>
+                        <li><strong>Advertencia:</strong> No volver a congelar una vez descongelado</li>
+                        <li><strong>En inglés:</strong> Frozen Lulo Pulp - 100% pulp</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="about" id="producto">
+        <div class="producto-contenido">
+            <div class="producto-img">
+                <a href="index.html">
+                    <img src="./imgs/luloProducto.jpg" alt="Pulpa de lulo 100% orgánica">
+                </a>
+            </div>
+
+            <div class="producto-info">
+                <h2>Pulpa de Lulo Orgánica</h2>
+                <p>100% natural, sin azúcar añadida, congelada para preservar su frescura. Rica en vitamina C, fibra y
+                    antioxidantes. Ideal para jugos, smoothies, helados y más.</p>
+                <ul>
+                    <li>Presentación: 250g o 1Kg</li>
+                    <li>Empaque biodegradable</li>
+                    <li>Certificado Orgánico UE</li>
+                    <li>Mantener congelado a -18°C</li>
+                </ul>
+                <div id="formularioCompra" class="formulario-compra">
+                    <form onsubmit="event.preventDefault(); alert('Producto agregado al carrito.')">
+                        <label for="presentacion">Presentación:</label>
+                        <select id="presentacion" name="presentacion">
+                            <option value="250">250 g - $3.10 USD</option>
+                            <option value="1000">1 Kg - $8.00 USD</option>
+                        </select>
+
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" id="cantidad" name="cantidad" value="1" min="1">
+
+                        <button type="submit">Comprar ahora</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <div id="pedidoModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); 
+    justify-content:center; align-items:center; z-index: 2000;">
+        <div style="background:#fff; padding:1.5rem; border-radius:8px; width:90%; max-width:400px; position:relative;">
+            <h3>Completa tu pedido</h3>
+            <form id="formPedido">
+                <label for="direccion">Dirección de entrega:</label><br>
+                <textarea id="direccion" name="direccion" required
+                    style="width:100%; height:60px; margin-bottom:1rem;"></textarea><br>
+
+                <label for="fechaEntrega">Fecha de entrega:</label><br>
+                <input type="date" id="fechaEntrega" name="fechaEntrega" required
+                    style="width:100%; margin-bottom:1rem;"><br>
+
+                <button type="submit"
+                    style="background:#84BD00; color:#fff; border:none; padding:0.5rem 1rem; border-radius:5px; cursor:pointer;">Enviar</button>
+                <button type="button" id="cerrarModal"
+                    style="background:#ccc; color:#333; border:none; padding:0.5rem 1rem; border-radius:5px; cursor:pointer; margin-left:0.5rem;">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Lulo Co Export S.A.S. Todos los derechos reservados.</p>
+        <p>Km 5 vía Funza-Mosquera, Cundinamarca, Colombia | contacto@lulocoexport.com</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/lulo_co.exports?igsh=Y2J4eTE4Y2I3bzBq" target="_blank"
+                aria-label="Instagram" rel="noopener noreferrer">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5zm0 1.5h8.5a4.25 4.25 0 0 1 4.25 4.25v8.5a4.25 4.25 0 0 1-4.25 4.25h-8.5a4.25 4.25 0 0 1-4.25-4.25v-8.5a4.25 4.25 0 0 1 4.25-4.25zm4.25 2.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 1.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm3.75-.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                </svg>
+            </a>
+            <a href="https://wa.me/573042622188" target="_blank" aria-label="WhatsApp" rel="noopener noreferrer">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M20.52 3.48A11.91 11.91 0 0 0 12 0C5.37 0 0 5.37 0 12a11.82 11.82 0 0 0 1.6 6L0 24l6-1.56a11.9 11.9 0 0 0 6 1.56c6.63 0 12-5.37 12-12 0-3.23-1.26-6.27-3.48-8.52zm-8.6 16.45a9.08 9.08 0 0 1-4.88-1.46l-.35-.21-3.06.8.82-3.02-.23-.34a9.05 9.05 0 0 1 1.58-12.55 8.98 8.98 0 0 1 5.1-1.49 9.09 9.09 0 0 1 6.42 2.67 9.07 9.07 0 0 1 2.68 6.43 9.07 9.07 0 0 1-9.04 9.04zm5.13-7.34c-.28-.14-1.64-.8-1.9-.89-.26-.08-.45-.14-.64.14-.19.28-.73.89-.9 1.07-.17.19-.35.21-.65.07a7.6 7.6 0 0 1-2.24-1.38 8.46 8.46 0 0 1-1.57-1.94c-.17-.29-.02-.45.13-.59.14-.14.32-.36.48-.54a1.64 1.64 0 0 0 .24-.41c.08-.14.04-.26-.02-.36-.07-.11-.63-1.52-.87-2.08-.23-.55-.47-.48-.64-.49l-.55-.01a1.4 1.4 0 0 0-1.04.49 4.41 4.41 0 0 0-1.33 3.16c0 1.86 1.49 3.67 1.7 3.92.22.25 2.95 4.5 7.15 6.31a9.72 9.72 0 0 0 3.33 1.06 3.8 3.8 0 0 0 2.84-.96 3.63 3.63 0 0 0 1.28-2.1c.1-.3.1-.55.07-.62-.03-.07-.26-.11-.54-.2z" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+</body>
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
+    }
+</script>
+
+<script>
+
+    const modal = document.getElementById('pedidoModal');
+    const formPedido = document.getElementById('formPedido');
+    const botonComprar = document.querySelector('form button[type="submit"]');
+    const botonCerrar = document.getElementById('cerrarModal');
+
+
+    botonComprar.addEventListener('click', function (e) {
+        e.preventDefault();
+        modal.style.display = 'flex';
+    });
+
+
+    botonCerrar.addEventListener('click', () => {
+        modal.style.display = 'none';
+        formPedido.reset();
+    });
+
+    formPedido.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Pedido enviado',
+            text: 'Su pedido está en procesamiento',
+            confirmButtonColor: '#84BD00'
+        }).then(() => {
+            modal.style.display = 'none';
+            formPedido.reset();
+        });
+    });
+
+
+</script>
+
+<script>
+    const slides = document.querySelectorAll('.carousel-slide');
+    let index = 0;
+
+    setInterval(() => {
+        slides[index].classList.remove('active');
+        index = (index + 1) % slides.length;
+        slides[index].classList.add('active');
+    }, 3000);
+</script>
+
+</html>
